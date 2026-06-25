@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anstech Systems Nigeria Limited | Tech, Media & Digital Training — Port Harcourt</title>
+  <meta name="description" content="Anstech Systems Nigeria Limited — supplying top-tier computers, multimedia equipment, and professional IT training in Port Harcourt, Rivers State, Nigeria." />
+
+  <!-- Google Fonts: Poppins + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal:    { DEFAULT: '#004B6E', dark: '#003550', light: '#00608F' },
+            yellow:  { DEFAULT: '#FFD100', hover: '#F0C500' },
+            charcoal:'#1F2937',
+          },
+          fontFamily: {
+            display: ['Poppins', 'sans-serif'],
+            body:    ['Inter',   'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Global ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1F2937; background: #fff; }
+    h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+
+    /* ── Navbar scroll shadow ── */
+    #navbar { transition: box-shadow 0.3s; }
+    #navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.12); }
+
+    /* ── Mobile menu ── */
+    #mobile-menu { transition: max-height 0.35s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 420px; opacity: 1; }
+
+    /* ── Hero diagonal accent ── */
+    .hero-accent {
+      position: absolute;
+      right: 0; top: 0;
+      width: 55%;
+      height: 100%;
+      background: #004B6E;
+      clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: 0;
+    }
+
+    /* ── Product card hover ── */
+    .product-card { transition: transform 0.25s, box-shadow 0.25s; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,75,110,0.15); }
+
+    /* ── CTA strip parallax-ish ── */
+    .cta-strip {
+      background-image: url('ansotech1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    .cta-strip::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,75,110,0.88);
+      z-index: 0;
+    }
+    .cta-strip > * { position: relative; z-index: 1; }
+
+    /* ── Training course item ── */
+    .course-item { transition: background 0.2s, transform 0.2s; }
+    .course-item:hover { background: rgba(0,75,110,0.06); transform: translateX(4px); }
+
+    /* ── Smooth underline nav link ── */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 2px;
+      background: #FFD100;
+      transition: width 0.25s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── Section label eyebrow ── */
+    .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #004B6E;
+    }
+    .eyebrow-yellow { color: #FFD100; }
+
+    /* ── Yellow underline decoration ── */
+    .title-underline {
+      display: inline-block;
+      position: relative;
+    }
+    .title-underline::after {
+      content: '';
+      position: absolute; left: 0; bottom: -6px;
+      width: 52px; height: 4px;
+      background: #FFD100;
+      border-radius: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta-strip { background-attachment: scroll; }
+      .product-card:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════ -->
+<nav id="navbar" class="sticky top-0 z-50 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="flex items-center justify-between h-18 py-3">
+
+      <!-- Logo + Name -->
+      <a href="#home" class="flex items-center gap-3 flex-shrink-0">
+        <img src="logo.png" alt="Anstech Systems Logo" class="h-10 w-auto object-contain" />
+        <span class="font-display font-700 text-[#004B6E] text-base leading-tight hidden sm:block">
+          Anstech Systems<br /><span class="text-xs font-500 text-gray-500 tracking-wide">Nigeria Limited</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="#home"     class="nav-link text-sm font-medium text-gray-700 hover:text-[#004B6E]">Home</a></li>
+        <li><a href="#products" class="nav-link text-sm font-medium text-gray-700 hover:text-[#004B6E]">Products</a></li>
+        <li><a href="#training" class="nav-link text-sm font-medium text-gray-700 hover:text-[#004B6E]">Training</a></li>
+        <li><a href="#services" class="nav-link text-sm font-medium text-gray-700 hover:text-[#004B6E]">Services</a></li>
+        <li><a href="#contact"  class="nav-link text-sm font-medium text-gray-700 hover:text-[#004B6E]">Contact</a></li>
+      </ul>
+
+      <!-- CTA + Hamburger -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/2347060837925" target="_blank" rel="noopener noreferrer"
+           class="hidden sm:inline-flex items-center gap-2 bg-[#FFD100] hover:bg-yellow-400 text-[#004B6E] font-display font-600 text-sm px-5 py-2.5 rounded-full transition-colors duration-200">
+          <i class="fab fa-whatsapp text-base"></i> WhatsApp Us
+        </a>
+        <button id="hamburger" aria-label="Open menu" class="lg:hidden text-[#004B6E] text-xl p-2">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-white border-t border-gray-100 px-5">
+    <ul class="py-4 space-y-1">
+      <li><a href="#home"     class="block py-2.5 text-sm font-medium text-gray-700 hover:text-[#004B6E]">Home</a></li>
+      <li><a href="#products" class="block py-2.5 text-sm font-medium text-gray-700 hover:text-[#004B6E]">Products</a></li>
+      <li><a href="#training" class="block py-2.5 text-sm font-medium text-gray-700 hover:text-[#004B6E]">Training</a></li>
+      <li><a href="#services" class="block py-2.5 text-sm font-medium text-gray-700 hover:text-[#004B6E]">Services</a></li>
+      <li><a href="#contact"  class="block py-2.5 text-sm font-medium text-gray-700 hover:text-[#004B6E]">Contact</a></li>
+      <li class="pt-2">
+        <a href="https://wa.me/2347060837925" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-[#FFD100] text-[#004B6E] font-display font-600 text-sm px-5 py-2.5 rounded-full">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════════ -->
+<section id="home" class="relative overflow-hidden bg-white min-h-[88vh] flex items-center">
+  <!-- Teal diagonal panel (desktop) -->
+  <div class="hero-accent hidden md:block"></div>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full py-20 md:py-0 relative z-10">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+
+      <!-- Text Column -->
+      <div class="md:py-24">
+        <p class="eyebrow mb-4">Port Harcourt's Trusted Tech Partner</p>
+        <h1 class="font-display font-800 text-[#1F2937] text-4xl lg:text-5xl xl:text-[3.4rem] leading-tight mb-6">
+          Your Premier Hub for<br />
+          <span class="text-[#004B6E]">Tech, Media,</span> and<br />
+          <span class="relative inline-block">Digital Training
+            <span class="absolute left-0 -bottom-1 h-1.5 w-full bg-[#FFD100] rounded-sm"></span>
+          </span>.
+        </h1>
+        <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-10 max-w-lg">
+          Supplying top-tier computers, multimedia equipment, and professional IT training in Port Harcourt. From desktop to deployment — Anstech has you covered.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#training"
+             class="inline-flex items-center gap-2 bg-[#004B6E] hover:bg-[#003550] text-white font-display font-600 text-sm px-7 py-3.5 rounded-full transition-colors duration-200 shadow-lg shadow-[#004B6E]/30">
+            View Our Training Courses <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+          <a href="#products"
+             class="inline-flex items-center gap-2 border-2 border-[#004B6E] text-[#004B6E] hover:bg-[#004B6E] hover:text-white font-display font-600 text-sm px-7 py-3.5 rounded-full transition-colors duration-200">
+            Shop Devices
+          </a>
+        </div>
+        <!-- Trust badges -->
+        <div class="mt-12 flex flex-wrap items-center gap-6">
+          <div class="flex items-center gap-2 text-gray-500 text-xs">
+            <i class="fas fa-shield-halved text-[#FFD100] text-lg"></i>
+            <span>Genuine Products</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-500 text-xs">
+            <i class="fas fa-headset text-[#FFD100] text-lg"></i>
+            <span>Expert Support</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-500 text-xs">
+            <i class="fas fa-certificate text-[#FFD100] text-lg"></i>
+            <span>Certified Trainers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+      <div class="relative md:h-screen md:max-h-[640px] flex items-center justify-center">
+        <!-- Yellow corner accent -->
+        <div class="absolute top-6 right-6 w-20 h-20 bg-[#FFD100] rounded-2xl opacity-80 hidden md:block"></div>
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl w-full max-w-lg md:max-w-none aspect-[4/3] md:aspect-auto md:h-[480px]">
+          <img src="officewithceo.jpg" alt="Anstech Systems office and team" class="w-full h-full object-cover" />
+          <!-- Floating badge -->
+          <div class="absolute bottom-5 left-5 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center gap-3">
+            <div class="bg-[#004B6E] rounded-lg w-10 h-10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-pin text-[#FFD100] text-sm"></i>
+            </div>
+            <div>
+              <p class="font-display font-700 text-[#004B6E] text-sm leading-none">Port Harcourt, Nigeria</p>
+              <p class="text-gray-400 text-xs mt-0.5">Rivers State · 500102</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     STATS BAR
+═══════════════════════════════════════════════ -->
+<div class="bg-[#004B6E] py-10">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="font-display font-800 text-[#FFD100] text-3xl">500+</p>
+        <p class="text-white/70 text-sm mt-1">Devices Sold</p>
+      </div>
+      <div>
+        <p class="font-display font-800 text-[#FFD100] text-3xl">8+</p>
+        <p class="text-white/70 text-sm mt-1">Training Courses</p>
+      </div>
+      <div>
+        <p class="font-display font-800 text-[#FFD100] text-3xl">300+</p>
+        <p class="text-white/70 text-sm mt-1">Graduates</p>
+      </div>
+      <div>
+        <p class="font-display font-800 text-[#FFD100] text-3xl">100%</p>
+        <p class="text-white/70 text-sm mt-1">Client Trust</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PRODUCTS SECTION
+═══════════════════════════════════════════════ -->
+<section id="products" class="py-24 bg-[#F3F4F6]">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center mb-14">
+      <p class="eyebrow mb-3">What We Sell</p>
+      <h2 class="font-display font-700 text-[#1F2937] text-3xl lg:text-4xl title-underline">
+        Quality Tech for Every Need
+      </h2>
+      <p class="text-gray-500 mt-7 max-w-xl mx-auto text-base">From professional workstations to creative media tools — we stock, source, and deliver the right equipment for you.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Card 1: Laptops -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+        <div class="relative h-52 overflow-hidden">
+          <img src="LAPTOP.jpg" alt="Premium Laptops and Computers" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          <div class="absolute top-3 left-3 bg-[#FFD100] text-[#004B6E] text-xs font-display font-700 px-2.5 py-1 rounded-full">Top Seller</div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="w-10 h-10 bg-[#004B6E]/10 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-laptop text-[#004B6E]"></i>
+          </div>
+          <h3 class="font-display font-700 text-[#1F2937] text-lg mb-2">Premium Laptops &amp; Computers</h3>
+          <p class="text-gray-500 text-sm leading-relaxed flex-1">Genuine HP, Dell, Toshiba, and Acer units for students, professionals, and businesses of all sizes.</p>
+          <a href="#contact" class="mt-5 inline-flex items-center gap-1.5 text-[#004B6E] font-display font-600 text-sm hover:gap-3 transition-all">
+            Enquire Now <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Gaming / Workstations -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+        <div class="relative h-52 overflow-hidden">
+          <img src="WORKSTATION.jpeg" alt="Gaming Systems and Workstations" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="w-10 h-10 bg-[#004B6E]/10 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-desktop text-[#004B6E]"></i>
+          </div>
+          <h3 class="font-display font-700 text-[#1F2937] text-lg mb-2">Gaming Systems &amp; Workstations</h3>
+          <p class="text-gray-500 text-sm leading-relaxed flex-1">High-performance rigs built for intensive gaming, 3D rendering, video production, and enterprise workloads.</p>
+          <a href="#contact" class="mt-5 inline-flex items-center gap-1.5 text-[#004B6E] font-display font-600 text-sm hover:gap-3 transition-all">
+            Enquire Now <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Media & Content -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+        <div class="relative h-52 overflow-hidden">
+          <img src="newbrandlaptop.jpeg" alt="Media and Content Creation Equipment" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="w-10 h-10 bg-[#004B6E]/10 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-camera-retro text-[#004B6E]"></i>
+          </div>
+          <h3 class="font-display font-700 text-[#1F2937] text-lg mb-2">Media &amp; Content Equipment</h3>
+          <p class="text-gray-500 text-sm leading-relaxed flex-1">Cameras, microphones, lighting, and accessories for creators, journalists, and production studios.</p>
+          <a href="#contact" class="mt-5 inline-flex items-center gap-1.5 text-[#004B6E] font-display font-600 text-sm hover:gap-3 transition-all">
+            Enquire Now <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4: Light & Sound -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+        <div class="relative h-52 overflow-hidden">
+          <img src="soundsystem.jpg" alt="Light and Sound Equipment" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="w-10 h-10 bg-[#004B6E]/10 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-volume-high text-[#004B6E]"></i>
+          </div>
+          <h3 class="font-display font-700 text-[#1F2937] text-lg mb-2">Light &amp; Sound Equipment</h3>
+          <p class="text-gray-500 text-sm leading-relaxed flex-1">Professional-grade speakers, mixers, amplifiers, and stage lighting for events, churches, and venues.</p>
+          <a href="#contact" class="mt-5 inline-flex items-center gap-1.5 text-[#004B6E] font-display font-600 text-sm hover:gap-3 transition-all">
+            Enquire Now <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     TRAINING ACADEMY
+═══════════════════════════════════════════════ -->
+<section id="training" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Intro -->
+      <div>
+        <p class="eyebrow mb-3">Our Training Academy</p>
+        <h2 class="font-display font-700 text-[#1F2937] text-3xl lg:text-4xl leading-tight mb-6 title-underline">
+          Equip Yourself with In-Demand Digital Skills
+        </h2>
+        <p class="text-gray-600 text-base leading-relaxed mt-8 mb-10">
+          Our hands-on training programmes are designed for beginners and professionals alike. Walk away with practical, employer-ready skills — not just certificates.
+        </p>
+        <a href="https://wa.me/2347060837925?text=Hello%20Anstech%2C%20I%20want%20to%20register%20for%20a%20training%20course." target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-[#FFD100] hover:bg-yellow-400 text-[#004B6E] font-display font-700 text-sm px-7 py-3.5 rounded-full transition-colors duration-200 shadow-md">
+          <i class="fab fa-whatsapp"></i> Register via WhatsApp
+        </a>
+        <!-- Highlight box -->
+        <div class="mt-10 bg-[#004B6E] rounded-2xl p-6 text-white">
+          <div class="flex items-start gap-4">
+            <div class="bg-[#FFD100] rounded-xl w-11 h-11 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-award text-[#004B6E]"></i>
+            </div>
+            <div>
+              <p class="font-display font-700 text-base">Certificate of Completion</p>
+              <p class="text-white/70 text-sm mt-1 leading-relaxed">All courses come with a recognised certificate to boost your career profile and freelancing opportunities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Course list -->
+      <div class="bg-[#F3F4F6] rounded-3xl p-8">
+        <p class="font-display font-700 text-[#004B6E] text-sm uppercase tracking-widest mb-6">Available Courses</p>
+        <ul class="space-y-2">
+
+          <li class="course-item flex items-center gap-4 p-4 rounded-xl cursor-default">
+            <span class="w-10 h-10 bg-[#004B6E] rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-computer text-[#FFD100] text-sm"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">Desktop Appreciation</p>
+              <p class="text-gray-500 text-xs">Computer fundamentals, OS, and productivity tools</p>
+            </div>
+          </li>
+
+          <li class="course-item flex items-center gap-4 p-4 rounded-xl cursor-default">
+            <span class="w-10 h-10 bg-[#004B6E] rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-pen-nib text-[#FFD100] text-sm"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">Graphic Design</p>
+              <p class="text-gray-500 text-xs">Photoshop, Illustrator, CorelDRAW &amp; branding</p>
+            </div>
+          </li>
+
+          <li class="course-item flex items-center gap-4 p-4 rounded-xl cursor-default">
+            <span class="w-10 h-10 bg-[#004B6E] rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-chart-bar text-[#FFD100] text-sm"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">Data Analysis</p>
+              <p class="text-gray-500 text-xs">Excel, Power BI, and business intelligence tools</p>
+            </div>
+          </li>
+
+          <li class="course-item flex items-center gap-4 p-4 rounded-xl cursor-default">
+            <span class="w-10 h-10 bg-[#004B6E] rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-code text-[#FFD100] text-sm"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">Web Development</p>
+              <p class="text-gray-500 text-xs">HTML, CSS, JavaScript, and live project builds</p>
+            </div>
+          </li>
+
+          <li class="course-item flex items-center gap-4 p-4 rounded-xl cursor-default">
+            <span class="w-10 h-10 bg-[#004B6E] rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-video text-[#FFD100] text-sm"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">CCTV Camera Installations</p>
+              <p class="text-gray-500 text-xs">Setup, cabling, DVR configuration &amp; maintenance</p>
+            </div>
+          </li>
+
+          <li class="course-item flex items-center gap-4 p-4 rounded-xl cursor-default">
+            <span class="w-10 h-10 bg-[#004B6E] rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-film text-[#FFD100] text-sm"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">Content Creation</p>
+              <p class="text-gray-500 text-xs">Photography, video editing &amp; social media strategy</p>
+            </div>
+          </li>
+
+          <li class="course-item flex items-center gap-4 p-4 rounded-xl cursor-default">
+            <span class="w-10 h-10 bg-[#004B6E] rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-music text-[#FFD100] text-sm"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">Light &amp; Sounds Engineering</p>
+              <p class="text-gray-500 text-xs">PA systems, stage lighting, and live event production</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     CTA STRIP (parallax background)
+═══════════════════════════════════════════════ -->
+<div class="cta-strip py-20 text-center px-5">
+  <p class="eyebrow-yellow eyebrow mb-4">Get Started Today</p>
+  <h2 class="font-display font-800 text-white text-3xl lg:text-4xl mb-6 max-w-2xl mx-auto leading-tight">
+    Ready to Upgrade Your Tech or Learn a New Skill?
+  </h2>
+  <p class="text-white/70 text-base max-w-xl mx-auto mb-10">
+    Reach our team instantly via WhatsApp for pricing, course schedules, or installation bookings.
+  </p>
+  <div class="flex flex-wrap justify-center gap-4">
+    <a href="https://wa.me/2347060837925" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-2 bg-[#FFD100] hover:bg-yellow-400 text-[#004B6E] font-display font-700 px-8 py-4 rounded-full text-sm transition-colors duration-200 shadow-xl">
+      <i class="fab fa-whatsapp text-lg"></i> Chat on WhatsApp
+    </a>
+    <a href="mailto:anstechglobals1@gmail.com"
+       class="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#004B6E] font-display font-700 px-8 py-4 rounded-full text-sm transition-colors duration-200">
+      <i class="fas fa-envelope"></i> Send an Email
+    </a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SERVICES & REPAIRS
+═══════════════════════════════════════════════ -->
+<section id="services" class="py-24 bg-[#F3F4F6]">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <!-- Image -->
+      <div class="relative">
+        <div class="absolute -top-4 -left-4 w-32 h-32 bg-[#FFD100] rounded-2xl opacity-30"></div>
+        <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/3]">
+          <img src="CCTV.jpg" alt="CCTV installation and security services" class="w-full h-full object-cover" />
+        </div>
+        <!-- Floating info card -->
+        <div class="absolute -bottom-5 -right-4 md:right-6 bg-white rounded-2xl px-5 py-4 shadow-xl border border-gray-100 max-w-[220px]">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fas fa-circle-check text-[#004B6E] text-sm"></i>
+            <span class="font-display font-700 text-[#004B6E] text-xs uppercase tracking-wide">Trusted Service</span>
+          </div>
+          <p class="text-gray-600 text-xs leading-relaxed">CCTV install &bull; Tech repairs &bull; Diagnostics &bull; Sales support</p>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <p class="eyebrow mb-3">Services &amp; Repairs</p>
+        <h2 class="font-display font-700 text-[#1F2937] text-3xl lg:text-4xl leading-tight mb-6 title-underline">
+          Professional Installation &amp; Tech Support
+        </h2>
+        <p class="text-gray-600 text-base leading-relaxed mt-8 mb-10">
+          We provide expert CCTV camera installations, general device diagnostics, and sales and repairs of computer systems to keep your business running securely.
+        </p>
+
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4">
+            <span class="mt-0.5 w-8 h-8 bg-[#004B6E] rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-[#FFD100] text-xs"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">CCTV Camera Installation</p>
+              <p class="text-gray-500 text-xs mt-0.5">Residential and commercial security camera setup with full configuration and remote viewing.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-0.5 w-8 h-8 bg-[#004B6E] rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-screwdriver-wrench text-[#FFD100] text-xs"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">Device Diagnostics &amp; Repair</p>
+              <p class="text-gray-500 text-xs mt-0.5">Laptop, desktop, and peripheral repairs from certified technicians with fast turnaround.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-0.5 w-8 h-8 bg-[#004B6E] rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-cart-shopping text-[#FFD100] text-xs"></i>
+            </span>
+            <div>
+              <p class="font-display font-600 text-[#1F2937] text-sm">Sales &amp; Procurement Support</p>
+              <p class="text-gray-500 text-xs mt-0.5">We help you source and procure the right devices for your office, school, or project at the best price.</p>
+            </div>
+          </li>
+        </ul>
+
+        <a href="https://wa.me/2347060837925?text=Hello%20Anstech%2C%20I%20need%20a%20service%20or%20repair." target="_blank" rel="noopener noreferrer"
+           class="mt-10 inline-flex items-center gap-2 bg-[#004B6E] hover:bg-[#003550] text-white font-display font-600 text-sm px-7 py-3.5 rounded-full transition-colors duration-200 shadow-lg shadow-[#004B6E]/30">
+          Book a Service <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     ADDITIONAL LAPTOP SHOWCASE (LAPTOP2)
+═══════════════════════════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <p class="eyebrow mb-3">Why Choose Anstech?</p>
+        <h2 class="font-display font-700 text-[#1F2937] text-2xl lg:text-3xl leading-snug mb-6 title-underline">
+          Genuine Devices.<br/>Expert Guidance.<br/>Unmatched Value.
+        </h2>
+        <p class="text-gray-600 text-base leading-relaxed mt-8 mb-8">
+          We don't just sell gadgets — we match you with the right technology for your specific needs and budget. Every device is sourced from verified suppliers and quality-checked before delivery.
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-[#F3F4F6] rounded-xl p-4">
+            <i class="fas fa-tags text-[#004B6E] text-xl mb-2"></i>
+            <p class="font-display font-600 text-[#1F2937] text-sm">Competitive Pricing</p>
+          </div>
+          <div class="bg-[#F3F4F6] rounded-xl p-4">
+            <i class="fas fa-truck-fast text-[#004B6E] text-xl mb-2"></i>
+            <p class="font-display font-600 text-[#1F2937] text-sm">Fast Delivery in PHC</p>
+          </div>
+          <div class="bg-[#F3F4F6] rounded-xl p-4">
+            <i class="fas fa-rotate text-[#004B6E] text-xl mb-2"></i>
+            <p class="font-display font-600 text-[#1F2937] text-sm">After-Sales Support</p>
+          </div>
+          <div class="bg-[#F3F4F6] rounded-xl p-4">
+            <i class="fas fa-handshake text-[#004B6E] text-xl mb-2"></i>
+            <p class="font-display font-600 text-[#1F2937] text-sm">Corporate Partnerships</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-3xl overflow-hidden shadow-lg aspect-[4/3]">
+        <img src="LAPTOP2.jpg" alt="Quality laptops and computers at Anstech" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     CONTACT / FOOTER
+═══════════════════════════════════════════════ -->
+<footer id="contact" class="bg-[#004B6E] text-white">
+  <!-- Contact strip -->
+  <div class="border-b border-white/10 py-16">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-12">
+
+        <!-- Col 1: Brand -->
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <img src="logo.png" alt="Anstech Logo" class="h-10 w-auto object-contain bg-white rounded-lg p-1" />
+            <span class="font-display font-700 text-white text-base leading-tight">
+              Anstech Systems<br /><span class="text-xs font-400 text-white/60">Nigeria Limited</span>
+            </span>
+          </div>
+          <p class="text-white/70 text-sm leading-relaxed mb-6">
+            Empowering Nigeria with premium tech and digital skills. Your one-stop hub for computers, AV equipment, CCTV, and certified IT training in Port Harcourt.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="https://www.facebook.com/anstechsystems1" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+               class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FFD100] hover:text-[#004B6E] flex items-center justify-center transition-colors duration-200">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="https://www.instagram.com/anstech_globals" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+               class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FFD100] hover:text-[#004B6E] flex items-center justify-center transition-colors duration-200">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="https://wa.me/2347060837925" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+               class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#FFD100] hover:text-[#004B6E] flex items-center justify-center transition-colors duration-200">
+              <i class="fab fa-whatsapp text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <p class="font-display font-700 text-[#FFD100] text-xs uppercase tracking-widest mb-5">Quick Links</p>
+          <ul class="space-y-3">
+            <li><a href="#home"     class="text-white/70 text-sm hover:text-white hover:pl-1 transition-all duration-200 block">Home</a></li>
+            <li><a href="#products" class="text-white/70 text-sm hover:text-white hover:pl-1 transition-all duration-200 block">Products</a></li>
+            <li><a href="#training" class="text-white/70 text-sm hover:text-white hover:pl-1 transition-all duration-200 block">Training Academy</a></li>
+            <li><a href="#services" class="text-white/70 text-sm hover:text-white hover:pl-1 transition-all duration-200 block">Services &amp; Repairs</a></li>
+            <li><a href="#contact"  class="text-white/70 text-sm hover:text-white hover:pl-1 transition-all duration-200 block">Contact Us</a></li>
+            <li>
+              <a href="https://wa.me/2347060837925" target="_blank" rel="noopener noreferrer"
+                 class="text-white/70 text-sm hover:text-white hover:pl-1 transition-all duration-200 block">
+                WhatsApp Us
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact Details -->
+        <div>
+          <p class="font-display font-700 text-[#FFD100] text-xs uppercase tracking-widest mb-5">Get In Touch</p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-location-dot text-[#FFD100] mt-0.5 flex-shrink-0"></i>
+              <span class="text-white/70 text-sm leading-relaxed">Port Harcourt, Rivers State, Nigeria<br />Postal Code: 500102</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-phone text-[#FFD100] flex-shrink-0"></i>
+              <a href="tel:+2347060837925" class="text-white/70 text-sm hover:text-white transition-colors">+234 706 083 7925</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-phone-volume text-[#FFD100] flex-shrink-0"></i>
+              <a href="tel:07010950849" class="text-white/70 text-sm hover:text-white transition-colors">0701 095 0849</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-envelope text-[#FFD100] flex-shrink-0"></i>
+              <a href="mailto:anstechglobals1@gmail.com" class="text-white/70 text-sm hover:text-white transition-colors break-all">anstechglobals1@gmail.com</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-envelope-open text-[#FFD100] flex-shrink-0"></i>
+              <a href="mailto:anstech_globals1729@yahoo.com" class="text-white/70 text-sm hover:text-white transition-colors break-all">anstech_globals1729@yahoo.com</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fab fa-instagram text-[#FFD100] flex-shrink-0"></i>
+              <a href="https://www.instagram.com/anstech_globals" target="_blank" rel="noopener noreferrer" class="text-white/70 text-sm hover:text-white transition-colors">@anstech_globals</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="py-6">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
+      <p class="text-white/50 text-xs">&copy; 2026 Anstech Systems Nigeria Limited. All Rights Reserved.</p>
+      <p class="text-white/40 text-xs">Designed with <span class="text-[#FFD100]">&hearts;</span> in Port Harcourt, Nigeria</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════
+     WHATSAPP STICKY BUTTON
+═══════════════════════════════════════════════ -->
+<a href="https://wa.me/2347060837925" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"
+   class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#1ebe5c] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-colors duration-200 text-2xl">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════ -->
+<script>
+  // Navbar scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    const icon = hamburger.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-xmark');
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      const icon = hamburger.querySelector('i');
+      icon.classList.add('fa-bars');
+      icon.classList.remove('fa-xmark');
+    });
+  });
+</script>
+
+</body>
+</html>
